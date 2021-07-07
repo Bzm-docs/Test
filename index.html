@@ -77,20 +77,8 @@
         // 链接使用相对路径
         relativePath: true,
 
-        // 在找不到指定页面时加载
-        notFoundPage: "my404.md",
-
         // 让你的内容页在滚动到指定的锚点时，距离页面顶部有一定空间
         topMargin: 15, // default: 0
-
-        // search: {
-        //   paths: "auto",
-        //   placeholder: "🔍 搜索",
-        //   noData: "😒 找不到结果",
-        //   // Headline depth, 1 - 6
-        //   depth: 2,
-        //   maxAge: 86400000, // 过期时间，单位毫秒，默认一天
-        // },
 
         // 警报配置
         "flexible-alerts": {
@@ -176,9 +164,6 @@
       }
     </script>
 
-    <!-- 搜索插件 -->
-    <!-- <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script> -->
-
     <!-- 复制到剪贴板 -->
     <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
 
@@ -193,40 +178,6 @@
       async
       defer
     ></script>
-
-    <!-- Gitalk 评论系统 -->
-    <!-- <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/qianzai/mydocs@master/custom/plugin/gitalk/gitalk.css"
-    />
-
-    <script src="https://cdn.jsdelivr.net/gh/qianzai/mydocs@master/custom/plugin/gitalk/gitalk.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/qianzai/mydocs@master/custom/plugin/gitalk/gitalk.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/qianzai/mydocs@master/custom/plugin/gitalk/md5.min.js"></script>
-
-    <script>
-      window.title_id = window.location.hash.match(/#(.*?)([?]|$)/)
-        ? window.location.hash.match(/#(.*?)([?]|$)/)[1]
-        : "/";
-      const gitalk = new Gitalk({
-        // GitHub
-        clientID: "75c636472d8853b5e22a",
-        clientSecret: "8786e0b0f00cf27d240242ab814a6592b893d754",
-        repo: "mydocs",
-        owner: "qianzai",
-        admin: ["qianzai"],
-        title: decodeURI(window.title_id),
-        distractionFreeMode: false, // 是否添加全屏遮罩
-        id: md5(window.location.hash), // 页面的唯一标识，gitalk 会根据这个标识自动创建的issue的标签,我们使用页面的相对路径作为标识
-        enableHotKey: true, // 提交评论快捷键(cmd/ctrl + enter)
-      });
-      // 监听URL中hash的变化，如果发现换了一个MD文件，那么刷新页面，解决整个网站使用一个gitalk评论issues的问题。
-      window.onhashchange = function (event) {
-        if (event.newURL.split("?")[0] !== event.oldURL.split("?")[0]) {
-          location.reload();
-        }
-      };
-    </script> -->
 
     <!-- 代码高亮 -->
     <script src="//cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-bash.min.js"></script>
@@ -260,78 +211,6 @@
     <!-- 谷歌统计 -->
     <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/ga.min.js"></script>
 
-    <!-- 访问量统计 -->
-    <script
-      async
-      src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
-    ></script>
-
-    <!-- 运行时间统计 -->
-    <script language="javascript">
-      function siteTime() {
-        window.setTimeout("siteTime()", 1000);
-        var seconds = 1000;
-        var minutes = seconds * 60;
-        var hours = minutes * 60;
-        var days = hours * 24;
-        var years = days * 365;
-        var today = new Date();
-        var todayYear = today.getFullYear();
-        var todayMonth = today.getMonth() + 1;
-        var todayDate = today.getDate();
-        var todayHour = today.getHours();
-        var todayMinute = today.getMinutes();
-        var todaySecond = today.getSeconds();
-        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
-    year - 作为date对象的年份，为4位年份值
-    month - 0-11之间的整数，做为date对象的月份
-    day - 1-31之间的整数，做为date对象的天数
-    hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
-    minutes - 0-59之间的整数，做为date对象的分钟数
-    seconds - 0-59之间的整数，做为date对象的秒数
-    microseconds - 0-999之间的整数，做为date对象的毫秒数 */
-        var t1 = Date.UTC(2020, 12, 29, 00, 00, 00); //北京时间2020-12-29 00:00:00
-        var t2 = Date.UTC(
-          todayYear,
-          todayMonth,
-          todayDate,
-          todayHour,
-          todayMinute,
-          todaySecond
-        );
-        var diff = t2 - t1;
-        var diffYears = Math.floor(diff / years);
-        var diffDays = Math.floor(diff / days - diffYears * 365);
-        var diffHours = Math.floor(
-          (diff - (diffYears * 365 + diffDays) * days) / hours
-        );
-        var diffMinutes = Math.floor(
-          (diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
-            minutes
-        );
-        var diffSeconds = Math.floor(
-          (diff -
-            (diffYears * 365 + diffDays) * days -
-            diffHours * hours -
-            diffMinutes * minutes) /
-            seconds
-        );
-        document.getElementById("sitetime").innerHTML =
-          " 🕣已运行 " +
-          diffYears +
-          " 年 " +
-          diffDays +
-          " 天 " +
-          diffHours +
-          " 小时 " +
-          diffMinutes +
-          " 分钟 " +
-          diffSeconds +
-          " 秒 ";
-      }
-      siteTime();
-    </script>
-
     <!-- 回到顶部功能 -->
     <script src="https://cdn.jsdelivr.net/gh/qianzai/mydocs@master/custom/plugin/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/qianzai/mydocs@master/custom/plugin/jquery.goup.js"></script>
@@ -346,23 +225,6 @@
         });
       });
     </script>
-
-    <!-- alert 样式 -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css"
-      type="text/css"
-      media="all"
-    />
-
-    <!-- 复制提醒 -->
-    <!-- <script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
-<script>
-  document.body.oncopy = function () {
-    swal("复制成功 🎉",
-            "",
-            "success"); };
-</script> -->
 
     <!-- 看板娘 -->
     <script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script>
